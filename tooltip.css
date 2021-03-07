@@ -74,7 +74,6 @@
 }
 [data-tooltip]{
     cursor:pointer;
-    color:#7cb342;
     display:inline-block
 }
 /* @keyframes tooltip-anim{
