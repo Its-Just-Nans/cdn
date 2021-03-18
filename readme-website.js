@@ -152,10 +152,7 @@ function loadNewPage(url) {
                 let allScripts = document.getElementById("contenuMain").getElementsByTagName("script");
                 for (let script of allScripts) {
                     if (script.innerHTML == "") {
-                        let number = document.getElementsByTagName("script").length;
-                        let newScript = document.createElement("script");
-                        document.getElementsByTagName("script")[number - 1].after(newScript);
-                        newScript.src = script.src;
+                        generateElement(document.body, "script", { src: script.src, className: "scriptImported" });
                     } else {
                         generateElement(document.body, "script", { innerHTML: script.innerHTML, className: "scriptImported" });
                         //eval(script.innerHTML);
