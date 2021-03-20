@@ -62,7 +62,7 @@ window.onhashchange = function (event) {
     const newURL = event.newURL;
     if (event.oldURL != newURL) {
         //to prevent useless request (when the user click on the link to the actual page)
-        //smollPopUp({title : "You're dumb", content : 'Why are you clicking the same page ?!'}, 'ko');
+        //smollPopUp({title : "You're dumb", msg : 'Why are you clicking the same page ?!'}, { type: 'ko'});
         for (let oneLink of NAVIGATION_LINKS) {
             if (newURL == oneLink) {
                 displayNewPage();

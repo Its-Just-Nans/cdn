@@ -1,62 +1,82 @@
-function smollPopUp(message, type, callBack) {
-    const longMsg = 75;
-    let infoDisp = '';
-    let msg = '';
-    if(message.title){
-        if(message.title.length > longMsg){
-            infoDisp = message.title.substring(0, longMsg);
-            infoDisp += '...';
-        }else{
-            infoDisp = message.title;
-        }
+function smollPopUp(message, options, callBack) {
+    /*
+    options.maxTitleSize
+    options.maxMsgSize
+    options.popUpStyle
+    options.titleStyle
+    options.contentStyle
+    options.type
+    */
+    let title = "";
+    let msg = "";
+    if (options.maxTitleSize) {
+        title = message.title.substring(0, options.maxTitleSize) || "";
+        title += "...";
+    } else {
+        title = message.title || "";
     }
-    const longTitle = 40;
-    if(message.content){
-        if(message.content.length > longTitle){
-            msg = message.content.substring(0, longTitle);
-            msg += '...';
-        }else{
-            msg = message.content;
-        }
+    if (options.maxMsgSize) {
+        msg = message.msg.substring(0, options.maxMsgSize) || "";
+        msg += "...";
+    } else {
+        msg = message.msg || "";
     }
-    let popUp = document.createElement('div');
-    popUp.className = 'smollPopUp';
-    let titleOfPopUp = document.createElement('h4');
-    titleOfPopUp.innerHTML = infoDisp;
-    titleOfPopUp.style.margin = '0px 0px 5px 0px';
+    let popUp = document.createElement("div");
+    popUp.className = "smollPopUp";
+    let titleOfPopUp = document.createElement("h4");
+    titleOfPopUp.innerHTML = title;
+    titleOfPopUp.style.margin = "0px 0px 5px 0px";
     popUp.appendChild(titleOfPopUp);
-    let content = document.createElement('p');
+    if (options.titleStyle) {
+        Object.assign(titleOfPopUp.style, options.titleStyle);
+    }
+    let content = document.createElement("p");
     content.innerHTML = msg;
-    content.style.margin = '0px 0px 5px 0px';
+    content.style.margin = "0px 0px 5px 0px";
+    if (options.contentStyle) {
+        Object.assign(content.style, options.contentStyle);
+    }
     popUp.appendChild(content);
-    popUp.style.position = 'fixed';
-    popUp.style.top = '25px';
-    popUp.style.right = '-300px';
-    popUp.style.zIndex = '10000';
-    popUp.style.width = '300px';
-    popUp.style.boxSizing = 'border-box';
-    if(type === 'ok'){
-        popUp.style.backgroundColor = 'LIGHTGREEN';
-    }else if(type === 'ko'){
-        popUp.style.backgroundColor = 'LIGHTSALMON';
+    Object.assign(popUp.style, {
+        position: "fixed",
+        top: "25px",
+        right: "-300px",
+        zIndex: 10000,
+        width: "300px",
+        boxSizing: "border-box",
+        wordBreak: "break-work",
+        borderRadius: "10px",
+    });
+    if (options.popUpStyle) {
+        Object.assign(popUp.style, options.moreStyle);
+    }
+    if (options.type === "ok") {
+        popUp.style.backgroundColor = "LIGHTGREEN";
+    } else if (options.type === "ko") {
+        popUp.style.backgroundColor = "LIGHTSALMON";
     }
     //popUp.style.height = '100px';
-    popUp.style.borderRadius = '10px';
-    let style = document.createElement('style');
-    style.innerHTML = '@keyframes smollTransition {0%{transform:translate(0,0)}35%{transform:translate(-325px,0)}75%{transform:translate(-325px,0)}100%{transform:translate(10px,0)}}';
+    let style = document.createElement("style");
+    style.innerHTML = "@keyframes smollTransition {0%{transform:translate(0,0)}35%{transform:translate(-325px,0)}75%{transform:translate(-325px,0)}100%{transform:translate(10px,0)}}";
     popUp.appendChild(style);
-    popUp.style.padding = '10px';
-    popUp.style.animationDuration = '5s';
-    popUp.style.animationName = 'smollTransition';
-    popUp.style.animationTimingFunction = 'ease-out';
-    document.body.appendChild(popUp);
-    if(callBack){
-        let button = document.createElement('button');
+    popUp.style.padding = "10px";
+    popUp.style.animationDuration = "5s";
+    popUp.style.animationName = "smollTransition";
+    popUp.style.animationTimingFunction = "ease-out";
+    if (callBack) {
+        let button = document.createElement("button");
         button.innerHTML = callBack.name;
-        button.addEventListener('click', function(){callBack(message);}, false)
+        button.addEventListener(
+            "click",
+            function () {
+                callBack(message);
+            },
+            false
+        );
         popUp.appendChild(button);
     }
-    setTimeout(()=>{
-        popUp.parentNode.removeChild(popUp);
-    }, 5000);
+    document.body.appendChild(popUp);
+    setTimeout(() => {
+        popUp.remove();
+    }, 50000);
 }
