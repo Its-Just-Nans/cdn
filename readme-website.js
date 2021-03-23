@@ -124,6 +124,10 @@ function displayNewPage(link) {
 function loadNewPage(url) {
     makeRequest("GET", url)
         .then(function (response) {
+            let scriptImported = document.getElementsByClassName("scriptImported");
+            while (scriptImported.length != 0) {
+                scriptImported[0].remove();
+            }
             if (window.location.hash.startsWith("#readme-")) {
                 //if it's a readme we need to render it
                 document.getElementById("contenuMain").innerHTML = '<div id="globalReadMe"></div>';
@@ -144,10 +148,6 @@ function loadNewPage(url) {
                 };
                 render();
             } else {
-                let scriptImported = document.getElementsByClassName("scriptImported");
-                for (let oneScript of scriptImported) {
-                    oneScript.remove();
-                }
                 document.getElementById("contenuMain").innerHTML = response;
                 let allScripts = document.getElementById("contenuMain").getElementsByTagName("script");
                 for (let script of allScripts) {
