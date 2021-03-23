@@ -1,19 +1,28 @@
 var baseLink;
 var linkForStart;
-if (typeof path !== "undefined") {
-    baseLink = path;
-} else {
-    baseLink = `https://api.github.com/repos/${githubName}/${repoName}/contents/`;
-}
-if (typeof startPath !== "undefined") {
-    linkForStart = startPath;
-} else {
-    linkForStart = `https://api.github.com/repos/${githubName}/${repoName}/contents/`;
-}
-document.getElementById("dataTableTitle").innerHTML = `Exploring ${repoName} of ${githubName}`;
 var dataTable = document.getElementById("dataTable");
 
-generateTable(startPath);
+function startRender() {
+    if (typeof githubName === "undefined" || typeof repoName === "undefined") {
+        if (typeof path !== "undefined") {
+            baseLink = path;
+        } else {
+            baseLink = `https://api.github.com/repos/${githubName}/${repoName}/contents/`;
+        }
+        if (typeof startPath !== "undefined") {
+            linkForStart = startPath;
+        } else {
+            linkForStart = baseLink;
+        }
+        document.getElementById("dataTableTitle").innerHTML = `Exploring ${repoName} of ${githubName}`;
+        generateTable(startPath);
+    } else {
+        //we wait before retry
+        setTimeout(function () {
+            startRender();
+        }, 1000);
+    }
+}
 
 function generateTable(url) {
     dataTable.innerHTML = "";
