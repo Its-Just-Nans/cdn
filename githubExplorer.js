@@ -5,6 +5,11 @@ startRender();
 
 function startRender() {
     if (typeof githubName === "undefined" || typeof repoName === "undefined") {
+        //we wait before retry
+        setTimeout(function () {
+            startRender();
+        }, 1000);
+    } else {
         if (typeof path !== "undefined") {
             baseLink = path;
         } else {
@@ -17,11 +22,6 @@ function startRender() {
         }
         document.getElementById("dataTableTitle").innerHTML = `Exploring ${repoName} of ${githubName}`;
         generateTable(startPath);
-    } else {
-        //we wait before retry
-        setTimeout(function () {
-            startRender();
-        }, 1000);
     }
 }
 
