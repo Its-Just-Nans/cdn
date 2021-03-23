@@ -1,6 +1,7 @@
 var baseLink;
 var linkForStart;
 var dataTable = document.getElementById("dataTable");
+startRender();
 
 function startRender() {
     if (typeof githubName === "undefined" || typeof repoName === "undefined") {
