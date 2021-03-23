@@ -124,10 +124,9 @@ function displayNewPage(link) {
 function loadNewPage(url) {
     makeRequest("GET", url)
         .then(function (response) {
-            let scriptImported = document.getElementsByClassName("scriptImported");
-            while (scriptImported.length != 0) {
-                scriptImported[0].remove();
-            }
+            document.getElementsByClassName("scriptImported").forEach((oneScript) => {
+                oneScript.remove();
+            });
             if (window.location.hash.startsWith("#readme-")) {
                 //if it's a readme we need to render it
                 document.getElementById("contenuMain").innerHTML = '<div id="globalReadMe"></div>';
