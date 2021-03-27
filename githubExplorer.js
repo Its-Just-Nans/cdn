@@ -1,3 +1,13 @@
+/*
+Require :
+    const githubName = "";
+    const repoName   = "";
+    document.getElementById("dataTableTitle");
+    document.getElementById("dataTable");
+Feature :
+const startPath = "";
+*/
+
 var baseLink;
 var linkForStart;
 var dataTable = document.getElementById("dataTable");
@@ -21,7 +31,7 @@ function startRender() {
             linkForStart = baseLink;
         }
         document.getElementById("dataTableTitle").innerHTML = `Exploring ${repoName} of ${githubName}`;
-        generateTable(startPath);
+        generateTable(linkForStart);
     }
 }
 

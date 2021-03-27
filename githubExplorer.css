@@ -22,6 +22,9 @@
     color: blue;
     font-weight: bold;
 }
+.explorerContainer thead:first-child:hover {
+    color: black;
+}
 .explorerContainer tr {
     border: 1px solid grey;
 }
