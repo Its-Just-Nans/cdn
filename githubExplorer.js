@@ -36,6 +36,7 @@ function startRender() {
 }
 
 function generateTable(url) {
+    //not optimized because we reload all the table
     dataTable.innerHTML = "";
     if (url != baseLink) {
         let firstLine = document.createElement("tr");
