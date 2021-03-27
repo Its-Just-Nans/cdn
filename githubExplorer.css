@@ -18,12 +18,9 @@
 .explorerContainer td {
     padding: 5px 10px;
 }
-.explorerContainer tr:hover {
+.explorerContainer tbody tr:hover {
     color: blue;
     font-weight: bold;
-}
-.explorerContainer thead:first-child:hover {
-    color: black;
 }
 .explorerContainer tr {
     border: 1px solid grey;
