@@ -46,12 +46,11 @@ function checkStyleOfNav() {
 function setResponsive() {
     let navBlock = document.getElementsByTagName("nav")[0];
     let ulNav = navBlock.getElementsByTagName("ul")[0];
-    ulNav.className = "";
+    ulNav.className = "open-nav";
     if (window.innerWidth <= 1050) {
         ulNav.className = "";
         navBlock.addEventListener("click", checkStyleOfNav, false);
     } else {
-        ulNav.className = "open-nav";
         navBlock.removeEventListener("click", checkStyleOfNav, false);
     }
 }
