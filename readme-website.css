@@ -54,10 +54,6 @@ nav ul {
     transition: all 0.2s;
 }
 
-nav ul li:last-child {
-    padding-bottom: 40px;
-}
-
 @media screen and (min-width: 0px) and (max-width: 1050px) {
     nav {
         position: fixed;
@@ -81,6 +77,9 @@ nav ul li:last-child {
     #titleNav {
         margin-top: 15px;
         margin-bottom: 0px;
+    }
+    nav ul li:last-child {
+        padding-bottom: 40px;
     }
     #globalReadMe {
         font-size: 0.9em;
