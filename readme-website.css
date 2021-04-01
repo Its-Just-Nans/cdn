@@ -54,6 +54,10 @@ nav ul {
     transition: all 0.2s;
 }
 
+nav ul li:last-child {
+    padding-bottom: 20px;
+}
+
 @media screen and (min-width: 0px) and (max-width: 1050px) {
     nav {
         position: fixed;
@@ -73,9 +77,6 @@ nav ul {
         height: 93vh;
         padding: 10px;
         padding-bottom: 70px;
-    }
-    nav .open-nav {
-        padding-bottom: 20px;
     }
     #titleNav {
         margin-top: 15px;
