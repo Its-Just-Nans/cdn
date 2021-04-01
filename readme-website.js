@@ -6,6 +6,9 @@ const DEFAULT_FILE = "search.html";
 const DEFAULT_HASH = "#search";
 const DOMAIN_NAME = "https://its-just-nans.github.io";
 
+Options :
+
+const OPTIONS_showdown: see https://github.com/showdownjs/showdown#options
 */
 
 if (!NAME_OF_PROJECT) {
@@ -19,6 +22,15 @@ if (!DEFAULT_HASH) {
 }
 if (!DOMAIN_NAME) {
     console.error("DOMAIN_NAME undefined");
+}
+
+let optionsConverter;
+if (typeof OPTIONS_showdown !== "undefined") {
+    optionsConverter = OPTIONS_showdown;
+} else {
+    optionsConverter = {
+        openLinksInNewWindow: true,
+    };
 }
 
 function checkStyleOfNav() {
@@ -133,7 +145,7 @@ function loadNewPage(url) {
                 document.getElementById("contenuMain").innerHTML = '<div id="globalReadMe"></div>';
                 let render = function () {
                     if (typeof showdown !== "undefined") {
-                        let converter = new showdown.Converter();
+                        let converter = new showdown.Converter(optionsConverter);
                         converter.setFlavor("github");
                         let html = converter.makeHtml(response);
                         document.getElementById("globalReadMe").innerHTML = html;
