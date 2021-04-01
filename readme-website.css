@@ -74,6 +74,9 @@ nav ul {
         padding: 10px;
         padding-bottom: 70px;
     }
+    nav ul {
+        padding-bottom: 20px;
+    }
     #titleNav {
         margin-top: 15px;
         margin-bottom: 0px;
