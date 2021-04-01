@@ -35,23 +35,24 @@ if (typeof OPTIONS_showdown !== "undefined") {
 
 function checkStyleOfNav() {
     let navBlock = document.getElementsByTagName("nav")[0];
-    if (navBlock.getElementsByTagName("ul")[0].style.display == "none") {
-        navBlock.getElementsByTagName("ul")[0].style.display = "block";
+    let ulNav = navBlock.getElementsByTagName("ul")[0];
+    if (ulNav.className == "") {
+        ulNav.className = "open-nav";
     } else {
-        navBlock.getElementsByTagName("ul")[0].style.display = "none";
+        ulNav.className = "";
     }
 }
 
 function setResponsive() {
+    let navBlock = document.getElementsByTagName("nav")[0];
+    let ulNav = navBlock.getElementsByTagName("ul")[0];
+    ulNav.className = "";
     if (window.innerWidth <= 1050) {
-        let navBlock = document.getElementsByTagName("nav")[0];
-        navBlock.getElementsByTagName("ul")[0].style.display = "none";
+        ulNav.className = "";
         navBlock.addEventListener("click", checkStyleOfNav, false);
     } else {
-        if (document.getElementsByTagName("nav")[0].getElementsByTagName("ul")[0].style.display == "none") {
-            document.getElementsByTagName("nav")[0].getElementsByTagName("ul")[0].style.display = "block";
-        }
-        document.getElementsByTagName("nav")[0].removeEventListener("click", checkStyleOfNav, false);
+        ulNav.className = "open-nav";
+        navBlock.removeEventListener("click", checkStyleOfNav, false);
     }
 }
 
