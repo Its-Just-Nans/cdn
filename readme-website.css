@@ -15,7 +15,7 @@ nav {
     overflow: auto;
 }
 
-nav #nav-list li {
+nav li {
     margin-bottom: 5px;
 }
 
@@ -37,10 +37,6 @@ nav #nav-list li {
 nav a {
     text-decoration: none;
     color: black;
-}
-
-nav li {
-    margin-bottom: 10px;
 }
 
 #globalReadMe {
