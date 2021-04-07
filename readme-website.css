@@ -15,6 +15,10 @@ nav {
     overflow: auto;
 }
 
+nav #nav-list li {
+    padding-bottom: 5px;
+}
+
 #titleNav {
     text-align: center;
 }
