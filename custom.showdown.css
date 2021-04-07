@@ -137,6 +137,10 @@ blockquote > p{
     background: none !important;
 }
 
+iframe{
+    width: 55vw;
+    min-height: 30vw;
+}
 
 @media screen and (min-width: 0px) and (max-width: 1050px){
     p, ul, ol, table, pre, dl {
