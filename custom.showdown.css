@@ -123,10 +123,13 @@ th {
 
 img {
     max-width: 100%;
-    width: 40vw;
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+p img {
+    width: 40vw;
 }
 
 p {
