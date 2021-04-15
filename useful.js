@@ -23,19 +23,23 @@ async function makeRequest(method, url) {
 }
 
 function generateElement(where = null, type, attr = null, style = null) {
-    let element = document.createElement(type);
-    if (style) {
-        addStyle(element, style);
-    }
-    if (attr) {
-        for (let oneAttribute in attr) {
-            element[oneAttribute] = attr[oneAttribute];
+    try {
+        let element = document.createElement(type);
+        if (style) {
+            addStyle(element, style);
         }
+        if (attr) {
+            for (let oneAttribute in attr) {
+                element[oneAttribute] = attr[oneAttribute];
+            }
+        }
+        if (where) {
+            where.appendChild(element);
+        }
+        return element;
+    } catch (error) {
+        throw new Error(error);
     }
-    if (where) {
-        where.appendChild(element);
-    }
-    return element;
 }
 
 function copy(param) {
@@ -66,7 +70,5 @@ function removeAccent(s) {
 }
 
 function addStyle(HTMLelement, objectOfStyle) {
-    for (let index in objectOfStyle) {
-        HTMLelement.style[index] = objectOfStyle[index];
-    }
+    Object.assign(HTMLelement.style, objectOfStyle);
 }
