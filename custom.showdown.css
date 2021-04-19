@@ -167,4 +167,8 @@ iframe {
     blockquote > blockquote {
         margin-bottom: 0px;
     }
+    iframe {
+        width: 100%;
+        min-height: 250px;
+    }
 }
