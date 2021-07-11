@@ -65,7 +65,7 @@ function smollPopUp(message, options, callBack) {
     popUp.style.animationTimingFunction = "ease-out";
     if (callBack) {
         let button = document.createElement("button");
-        button.innerHTML = callBack.name;
+        button.innerHTML = callBack.name || "Click";
         button.addEventListener(
             "click",
             function () {
