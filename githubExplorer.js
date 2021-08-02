@@ -62,12 +62,12 @@ async function generateTable(url) {
         console.log(error);
     });
     if (!response) {
-        url = linkForStart;
+        generateTable(linkForStart);
         return;
     }
     const fileInDir = await response.json();
     if (!Array.isArray(fileInDir)) {
-        url = linkForStart;
+        generateTable(linkForStart);
         return;
     }
     for (let oneFile of fileInDir) {
